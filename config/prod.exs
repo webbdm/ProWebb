@@ -21,7 +21,7 @@ config :proWebb, ProWebbWeb.Endpoint,
 config :logger, level: :info
 
 # Configure your database
-config :proWebb, proWebb.Repo,
+config :proWebb, ProWebb.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
