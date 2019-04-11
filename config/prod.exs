@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :proWebb, ProWebbWeb.Endpoint,
   # http: [:inet6, port: System.get_env("PORT") || 4000], Origina; PHX value
-  http: [port: System.get_env("PORT")]
+  http: [port: System.get_env("PORT")],
   url: [scheme: "https", host: "proWebb", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
