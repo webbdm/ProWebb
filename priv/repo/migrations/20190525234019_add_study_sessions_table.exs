@@ -3,7 +3,7 @@ defmodule ProWebb.Repo.Migrations.AddStudySessionsTable do
 
   def up do
     create table("study_sessions") do
-      add(:name, :varchar)
+      add(:name, :string)
       add(:date, :date)
 
       timestamps()

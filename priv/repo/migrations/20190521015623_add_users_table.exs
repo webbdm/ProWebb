@@ -5,7 +5,7 @@ defmodule ProWebb.Repo.Migrations.AddUsersTable do
     create table("users") do
       add(:first_name, :string)
       add(:last_name, :string)
-      add(:email, :varchar)
+      add(:email, :string)
 
       timestamps()
     end
