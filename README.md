@@ -18,3 +18,8 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+  <!-- Buildpack issue with ecto was fixed by following this 
+  https://elixirforum.com/t/ecto-migration-fails-on-heroku/18112/8
+   - Logged on 4/11/19 - 
+   -->
