@@ -1,12 +1,13 @@
 defmodule ProWebb.Study.StudySession do
   use Ecto.Schema
   import Ecto.Changeset
+  @derive {Jason.Encoder, only: [:name, :date]}
 
   schema "study_sessions" do
     field(:date, :date)
     field(:name, :string)
 
-    has_many :notes, ProWebb.Study.Note
+    has_many(:notes, ProWebb.Study.Note)
 
     timestamps()
   end

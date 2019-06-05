@@ -17,14 +17,16 @@ defmodule ProWebbWeb.Router do
   scope "/api", ProWebbWeb do
     pipe_through(:api)
 
-    # resources("/users", UserController)
-    # get("/user/:id", UserController, :show)
+    # resources("/users", UserController) 
+    # get("/user/:id", UserController, :show) 
 
     resources("/notes", NoteController)
     get("/notes", NoteController, :index)
+    get("/notes/:id", NoteController, :show)
 
     resources("/study_sessions", StudySessionController)
-    # get("/study_sessions/:id", StudyNotesController, :show)
+    get("/study_sessions", StudyNotesController, :index)
+    get("/study_sessions/:id", StudyNotesController, :show)
   end
 
   # This is for MVC 
