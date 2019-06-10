@@ -1,7 +1,7 @@
 defmodule ProWebb.Study.Note do
   use Ecto.Schema
   import Ecto.Changeset
-  @derive {Jason.Encoder, only: [:user_id, :text, :study_session_id]}
+  @derive {Jason.Encoder, only: [:id, :user_id, :text, :study_session_id]}
 
   schema "notes" do
     field(:text, :string)
