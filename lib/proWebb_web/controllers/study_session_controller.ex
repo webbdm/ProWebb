@@ -1,13 +1,19 @@
 defmodule ProWebbWeb.StudySessionController do
   use ProWebbWeb, :controller
+  import Ecto.Query, warn: false
 
   alias ProWebb.Study.StudySession
   alias ProWebb.Repo
+  
 
   action_fallback(ProWebbWeb.FallbackController)
 
   def index(conn, _params) do
-    study_sessions = ProWebb.Repo.all(StudySession)
+    study_sessions =
+      StudySession
+      |> preload(:notes)
+      |> Repo.all()
+
     json(conn, %{data: study_sessions})
     # render(conn, "index.json", study_sessions: study_sessions)
   end
