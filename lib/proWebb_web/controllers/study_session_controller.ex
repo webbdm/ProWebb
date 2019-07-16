@@ -28,8 +28,13 @@ defmodule ProWebbWeb.StudySessionController do
 
   def show(conn, %{"id" => id}) do
     IO.puts(id)
-    study_session = ProWebb.Study.get_StudySession!(id)
-    json(conn, %{data: study_session})
+
+    study_session =
+      StudySession
+      |> preload(:notes)
+      |> Repo.get(id)
+
+    json(conn, study_session)
     # render(conn, "show.json", study_session: study_session)
   end
 
