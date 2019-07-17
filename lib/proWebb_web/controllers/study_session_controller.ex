@@ -4,7 +4,6 @@ defmodule ProWebbWeb.StudySessionController do
 
   alias ProWebb.Study.StudySession
   alias ProWebb.Repo
-  
 
   action_fallback(ProWebbWeb.FallbackController)
 
@@ -14,7 +13,7 @@ defmodule ProWebbWeb.StudySessionController do
       |> preload(:notes)
       |> Repo.all()
 
-    json(conn, %{data: study_sessions})
+    json(conn, study_sessions)
     # render(conn, "index.json", study_sessions: study_sessions)
   end
 
@@ -29,8 +28,13 @@ defmodule ProWebbWeb.StudySessionController do
 
   def show(conn, %{"id" => id}) do
     IO.puts(id)
-    study_session = ProWebb.Study.get_StudySession!(id)
-    json(conn, %{data: study_session})
+
+    study_session =
+      StudySession
+      |> preload(:notes)
+      |> Repo.get(id)
+
+    json(conn, study_session)
     # render(conn, "show.json", study_session: study_session)
   end
 
