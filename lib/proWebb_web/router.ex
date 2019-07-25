@@ -25,8 +25,12 @@ defmodule ProWebbWeb.Router do
     get("/notes/:id", NoteController, :show)
 
     resources("/study_sessions", StudySessionController)
-    get("/study_sessions", StudyNotesController, :index)
-    get("/study_sessions/:id", StudyNotesController, :show)
+
+    get("/study_sessions", StudySessionController, :index)
+    get("/study_sessions/:id", StudySessionController, :show)
+
+    post("/study_sessions", StudySessionController, :create)
+    options("/study_sessions", StudySessionController, :create)
   end
 
   # This is for MVC 

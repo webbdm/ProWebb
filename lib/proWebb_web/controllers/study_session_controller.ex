@@ -17,14 +17,18 @@ defmodule ProWebbWeb.StudySessionController do
     # render(conn, "index.json", study_sessions: study_sessions)
   end
 
-  #   def create(conn, %{"study_session" => study_session_params}) do
-  #     with {:ok, %StudySession{} = study_session} <- StudySession.create_study_session(study_session_params) do
-  #       conn
-  #       |> put_status(:created)
-  #       |> put_resp_header("location", Routes.study_session_path(conn, :show, study_session))
-  #       |> render("show.json", study_session: study_session)
-  #     end
-  #   end
+  def create(conn, params) do
+    json(conn, params)
+    # changeset = StudySession.changeset()
+    # with {:ok, %StudySession{} = study_session} <-
+    #        StudySession.create_study_session(study_session_params) do
+    #   conn
+    #   |> put_status(:created)
+    #   |> json(conn, %{})
+    #   # |> put_resp_header("location", Routes.study_session_path(conn, :show, study_session))
+    #   # |> render("show.json", study_session: study_session)
+    # end
+  end
 
   def show(conn, %{"id" => id}) do
     IO.puts(id)
