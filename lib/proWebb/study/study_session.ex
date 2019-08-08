@@ -13,9 +13,10 @@ defmodule ProWebb.Study.StudySession do
   end
 
   @doc false
-  def changeset(study_session, attrs) do
+  def changeset(study_session, attrs \\ :empty) do
     study_session
     |> cast(attrs, [:name, :date])
-    |> validate_required([:name, :date])
+
+    # |> validate_required([:name, :date])
   end
 end

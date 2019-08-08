@@ -5,7 +5,7 @@ defmodule ProWebbWeb.StudySessionController do
   alias ProWebb.Study.StudySession
   alias ProWebb.Repo
 
-  action_fallback(ProWebbWeb.FallbackController)
+  # action_fallback(ProWebbWeb.FallbackController)
 
   def index(conn, _params) do
     study_sessions =
@@ -17,17 +17,13 @@ defmodule ProWebbWeb.StudySessionController do
     # render(conn, "index.json", study_sessions: study_sessions)
   end
 
-  def create(conn, params) do
-    json(conn, params)
-    # changeset = StudySession.changeset()
-    # with {:ok, %StudySession{} = study_session} <-
-    #        StudySession.create_study_session(study_session_params) do
-    #   conn
-    #   |> put_status(:created)
-    #   |> json(conn, %{})
-    #   # |> put_resp_header("location", Routes.study_session_path(conn, :show, study_session))
-    #   # |> render("show.json", study_session: study_session)
-    # end
+  def create(conn, %{"studysession" => params}) do
+    with {:ok, %StudySession{} = study_session} <- StudySession.create_study_session(params) do
+      conn
+      |> put_status(:created)
+      # |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> render("studysession.json", studysession: studysession)
+    end
   end
 
   def show(conn, %{"id" => id}) do
