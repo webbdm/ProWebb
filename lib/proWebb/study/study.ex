@@ -52,11 +52,11 @@ defmodule ProWebb.Study do
       iex> update_Note(Note, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
   """
-  def update_Note(%Note{} = Note, attrs) do
-    Note
-    |> Note.changeset(attrs)
-    |> Repo.update()
-  end
+  # def update_Note(%Note{} = Note, attrs) do
+  #   Note
+  #   |> Note.changeset(attrs)
+  #   |> Repo.update()
+  # end
 
   @doc """
   Deletes a Note.
@@ -66,9 +66,9 @@ defmodule ProWebb.Study do
       iex> delete_Note(Note)
       {:error, %Ecto.Changeset{}}
   """
-  def delete_Note(%Note{} = Note) do
-    Repo.delete(Note)
-  end
+  # def delete_Note(%Note{} = Note) do
+  #   Repo.delete(Note)
+  # end
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking Note changes.
@@ -76,9 +76,9 @@ defmodule ProWebb.Study do
       iex> change_Note(Note)
       %Ecto.Changeset{source: %Note{}}
   """
-  def change_Note(%Note{} = Note) do
-    Note.changeset(Note, %{})
-  end
+  # def change_Note(%Note{} = Note) do
+  #   Note.changeset(Note, %{})
+  # end
 
   # Study Sessions
 
@@ -87,4 +87,10 @@ defmodule ProWebb.Study do
   end
 
   def get_StudySession!(id), do: Repo.get!(StudySession, id)
+
+  def create_study_session(attrs \\ %{}) do
+    %StudySession{}
+    |> StudySession.changeset(attrs)
+    |> Repo.insert()
+  end
 end
