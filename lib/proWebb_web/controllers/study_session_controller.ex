@@ -11,7 +11,7 @@ defmodule ProWebbWeb.StudySessionController do
   def index(conn, _params) do
     study_sessions =
       StudySession
-      |> preload(:notes)
+      # |> preload(:notes)
       |> Repo.all()
 
     json(conn, study_sessions)
@@ -33,7 +33,7 @@ defmodule ProWebbWeb.StudySessionController do
 
     study_session =
       StudySession
-      |> preload(:notes)
+      # |> preload(:notes)
       |> Repo.get(id)
 
     json(conn, study_session)

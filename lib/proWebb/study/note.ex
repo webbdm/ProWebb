@@ -7,7 +7,7 @@ defmodule ProWebb.Study.Note do
     field(:text, :string)
     field(:user_id, :id)
     field(:study_session_id, :id)
-
+    
     # belongs_to(:user, ProWebb.Study.User)
     # belongs_to(:study_sessions, ProWebb.Study.StudySession)
 
@@ -15,9 +15,10 @@ defmodule ProWebb.Study.Note do
   end
 
   @doc false
-  def changeset(note, attrs) do
+  def changeset(note, attrs \\ :empty) do
     note
-    |> cast(attrs, [:text])
-    |> validate_required([:text])
+    |> cast(attrs, [:text, :date])
   end
 end
+
+# Remove name references from controller

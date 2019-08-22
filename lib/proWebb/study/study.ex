@@ -38,7 +38,7 @@ defmodule ProWebb.Study do
       iex> create_Note(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
   """
-  def create_Note(attrs \\ %{}) do
+  def create_note(attrs \\ %{}) do
     %Note{}
     |> Note.changeset(attrs)
     |> Repo.insert()

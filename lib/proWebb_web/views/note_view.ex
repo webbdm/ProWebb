@@ -11,9 +11,11 @@ defmodule ProWebbWeb.NoteView do
   end
 
   def render("note.json", %{note: note}) do
-    %{id: note.id,
+    %{
+      id: note.id,
       user_id: note.user_id,
       text: note.text,
-      study_session_id: note.study_session_id}
+      study_session_id: note.study_session_id
+    }
   end
 end

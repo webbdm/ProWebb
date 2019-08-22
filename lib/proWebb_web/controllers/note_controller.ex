@@ -1,25 +1,34 @@
 defmodule ProWebbWeb.NoteController do
   use ProWebbWeb, :controller
 
+  alias ProWebb.Note
   alias ProWebb.Study.Note
   alias ProWebb.Repo
 
-  action_fallback(ProWebbWeb.FallbackController)
+  # action_fallback(ProWebbWeb.FallbackController)
 
   def index(conn, _params) do
-    notes = ProWebb.Repo.all(Note)
-    json(conn, %{data: notes})
+    notes =
+      Note
+      |> Repo.all()
+
+    json(conn, notes)
     # render(conn, "index.json", notes: notes)
   end
 
-  #   def create(conn, %{"note" => note_params}) do
-  #     with {:ok, %Note{} = note} <- Note.create_note(note_params) do
-  #       conn
-  #       |> put_status(:created)
-  #       |> put_resp_header("location", Routes.note_path(conn, :show, note))
-  #       |> render("show.json", note: note)
-  #     end
-  #   end
+  def create(conn, %{"text" => text, "name" => name, "study_session_id" => study_session_id}) do
+    with {:ok, %Note{} = note} <-
+           Note.create_note(%{
+             "name" => name,
+             "text" => text,
+             "study_session_id" => study_session_id
+           }) do
+      conn
+      |> put_status(:created)
+      # |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> render("note.json", note: note)
+    end
+  end
 
   def show(conn, %{"id" => id}) do
     IO.puts(id)
