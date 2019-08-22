@@ -7,7 +7,7 @@ defmodule ProWebb.Study.Note do
     field(:text, :string)
     field(:user_id, :id)
     field(:study_session_id, :id)
-    
+
     # belongs_to(:user, ProWebb.Study.User)
     # belongs_to(:study_sessions, ProWebb.Study.StudySession)
 
@@ -17,7 +17,7 @@ defmodule ProWebb.Study.Note do
   @doc false
   def changeset(note, attrs \\ :empty) do
     note
-    |> cast(attrs, [:text, :date])
+    |> cast(attrs, [:id, :text, :study_session_id, :user_id])
   end
 end
 

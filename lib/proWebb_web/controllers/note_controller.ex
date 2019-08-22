@@ -1,7 +1,7 @@
 defmodule ProWebbWeb.NoteController do
   use ProWebbWeb, :controller
 
-  alias ProWebb.Note
+  alias ProWebb.Study
   alias ProWebb.Study.Note
   alias ProWebb.Repo
 
@@ -16,10 +16,10 @@ defmodule ProWebbWeb.NoteController do
     # render(conn, "index.json", notes: notes)
   end
 
-  def create(conn, %{"text" => text, "name" => name, "study_session_id" => study_session_id}) do
+  def create(conn, %{"user_id" => user_id, "text" => text, "study_session_id" => study_session_id}) do
     with {:ok, %Note{} = note} <-
-           Note.create_note(%{
-             "name" => name,
+           Study.create_note(%{
+             "user_id" => user_id,
              "text" => text,
              "study_session_id" => study_session_id
            }) do
